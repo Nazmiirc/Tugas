@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pos/core/app_color.dart';
+import 'package:pos/core/components/app_button.dart';
+import 'package:pos/core/string_const/assets_const.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -6,77 +10,76 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      backgroundColor: AppColor.mainColor,
+      body: Stack(
         children: [
           SizedBox(
-            child: Container(
-              color: Colors.blue[800],
-              height: MediaQuery.of(context).size.height * 0.3,
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'QuickTix',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text(
-                    'Making Ticketing a Breeze!',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+            height: 213,
+            child: Center(
+              child: SizedBox(
+                width: MediaQuery.sizeOf(context).width / 2,
+                child: Image.asset(AssetsConst.logoWhite),
               ),
             ),
           ),
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Email loket',
-                    border: UnderlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text('Password', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Masukkan Password',
-                    border: UnderlineInputBorder(),
-                    suffixIcon: Icon(Icons.visibility),
-                  ),
-                ),
-                const SizedBox(height: 30),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[800],
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              child: ColoredBox(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 28),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 44),
+                      Text(
+                        'Email',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    onPressed: () {},
-                    child: const Text('Login', style: TextStyle(color: Colors.white)),
+                      TextField(
+                        decoration: InputDecoration(hintText: 'Email Loket'),
+                      ),
+                      SizedBox(height: 36),
+                      Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: 'Masukkan Password',
+                          suffixIcon: Icon(Icons.visibility),
+                        ),
+                      ),
+                      const SizedBox(height: 86.0),
+                      AppButton(
+                        label: 'Login',
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/main');
+                        },
+                      ),
+                      SizedBox(height: 128),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.asset(AssetsConst.logoCWB, height: 40),
+                      ),
+                      const SizedBox(height: 20.0),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ],

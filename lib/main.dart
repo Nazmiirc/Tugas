@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pos/ui/login_screen.dart';
+import 'package:pos/ui/main_screen.dart';
 import 'package:pos/ui/splash_screen.dart';
 
 void main() {
@@ -17,6 +18,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
+        '/log-in': (context) => LoginScreen(),
+        '/main': (context) => MainScreen(),
       },
     );
   }
